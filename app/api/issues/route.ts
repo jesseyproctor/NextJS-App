@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import {z} from 'zod';
-// import prisma from '../../../prisma/client';
-// import prisma from '@prisma/client';
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from '@/prisma/client';
 
 const createIssueSchema = z.object({
     title: z.string().min(1).max(255),
@@ -25,3 +22,4 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json(newIssue, {status: 201})
 }
+
